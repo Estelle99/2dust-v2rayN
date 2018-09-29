@@ -291,6 +291,15 @@ namespace v2rayN.Forms
 
         private void lvServers_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.A:
+                        menuSelectAll_Click(null, null);
+                        break;
+                }
+            }
             switch (e.KeyCode)
             {
                 case Keys.Enter:
@@ -912,6 +921,13 @@ namespace v2rayN.Forms
                 //刷新
                 RefreshServers();
                 LoadV2ray();
+            }
+        }
+        private void menuSelectAll_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in lvServers.Items)
+            {
+                item.Selected = true;
             }
         }
 

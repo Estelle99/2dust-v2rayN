@@ -362,7 +362,7 @@ namespace v2rayN
             RegistryKey regKey = null;
             try
             {
-                regKey = Registry.LocalMachine.CreateSubKey(autoRunRegPath);
+                regKey = Registry.CurrentUser.CreateSubKey(autoRunRegPath);
                 if (run)
                 {
                     string exePath = GetExePath();
@@ -392,7 +392,7 @@ namespace v2rayN
             RegistryKey regKey = null;
             try
             {
-                regKey = Registry.LocalMachine.OpenSubKey(autoRunRegPath, false);
+                regKey = Registry.CurrentUser.OpenSubKey(autoRunRegPath, false);
                 var value = regKey.GetValue(autoRunName) as string;
                 string exePath = GetExePath();
                 if (value?.Equals(exePath) == true)

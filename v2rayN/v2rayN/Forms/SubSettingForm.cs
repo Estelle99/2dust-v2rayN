@@ -117,6 +117,9 @@ namespace v2rayN.Forms
             AddSub();
 
             RefreshSubsView();
+
+            lvSubs.Items[lvSubs.Items.Count - 1].Selected = true;
+            txtRemarks.Focus();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -151,9 +154,9 @@ namespace v2rayN.Forms
         private void AddSub()
         {
             var subItem = new SubItem();
-            subItem.id =
-            subItem.remarks =
-            subItem.url = string.Empty;
+            subItem.id = string.Empty;
+            subItem.remarks = "备注(remarks)";
+            subItem.url = "地址(url)";
             config.subItem.Add(subItem);
         }
 

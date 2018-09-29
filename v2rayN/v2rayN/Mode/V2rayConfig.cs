@@ -71,12 +71,17 @@ namespace v2rayN.Mode
         /// <summary>
         /// 
         /// </summary>
+        public List<string> domainOverride { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public Inboundsettings settings { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         public StreamSettings streamSettings { get; set; }
+
     }
 
     public class Inboundsettings
@@ -225,6 +230,10 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public string protocol { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<string> domainOverride { get; set; }
         /// <summary>
         /// 
         /// </summary>

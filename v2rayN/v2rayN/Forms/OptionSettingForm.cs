@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using v2rayN.Handler;
 

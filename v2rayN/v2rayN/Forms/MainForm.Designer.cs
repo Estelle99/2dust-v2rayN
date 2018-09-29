@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.notifyMain = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuSysAgentEnabled = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,6 +100,7 @@
             this.tsbAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
+            this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsMain.SuspendLayout();
             this.cmsLv.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -136,7 +137,7 @@
             this.cmsMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.cmsMain.ShowCheckMargin = true;
             this.cmsMain.ShowImageMargin = false;
-            this.cmsMain.Size = new System.Drawing.Size(185, 186);
+            this.cmsMain.Size = new System.Drawing.Size(185, 164);
             // 
             // menuSysAgentEnabled
             // 
@@ -247,6 +248,7 @@
             this.menuMoveUp,
             this.menuMoveDown,
             this.menuMoveBottom,
+            this.menuSelectAll,
             this.toolStripSeparator9,
             this.menuPingServer,
             this.menuSpeedServer,
@@ -256,7 +258,7 @@
             this.menuExport2ShareUrl});
             this.cmsLv.Name = "cmsLv";
             this.cmsLv.OwnerItem = this.tsbServer;
-            this.cmsLv.Size = new System.Drawing.Size(257, 402);
+            this.cmsLv.Size = new System.Drawing.Size(257, 446);
             // 
             // menuAddVmessServer
             // 
@@ -449,7 +451,7 @@
             this.lvServers.GridLines = true;
             this.lvServers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvServers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.lvServers.Location = new System.Drawing.Point(0, 0);
             this.lvServers.MultiSelect = false;
             this.lvServers.Name = "lvServers";
@@ -697,6 +699,13 @@
             this.tsbClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
+            // menuSelectAll
+            // 
+            this.menuSelectAll.Name = "menuSelectAll";
+            this.menuSelectAll.Size = new System.Drawing.Size(256, 22);
+            this.menuSelectAll.Text = "全选      (Ctrl+A)";
+            this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -802,6 +811,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsbSubUpdate;
         private System.Windows.Forms.ToolStripMenuItem tsbCheckClearPACList;
         private System.Windows.Forms.ToolStripMenuItem menuKeepPAC;
+        private System.Windows.Forms.ToolStripMenuItem menuSelectAll;
     }
 }
 
