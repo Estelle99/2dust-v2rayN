@@ -500,6 +500,27 @@ namespace v2rayN.Forms
             }
         }
 
+        private void menuExport2SubContent_Click(object sender, EventArgs e)
+        {
+            GetLvSelectedIndex();
+
+            StringBuilder sb = new StringBuilder();
+            for (int k = 0; k < lvSelecteds.Count; k++)
+            {
+                string url = ConfigHandler.GetVmessQRCode(config, lvSelecteds[k]);
+                if (Utils.IsNullOrEmpty(url))
+                {
+                    continue;
+                }
+                sb.Append(url);
+                sb.AppendLine();
+            }
+            if (sb.Length > 0)
+            {
+                Utils.SetClipboardData(Utils.Base64Encode(sb.ToString()));
+                UI.Show(string.Format("批量导出订阅内容至剪贴板成功"));
+            }
+        }
 
         private void tsbOptionSetting_Click(object sender, EventArgs e)
         {
@@ -637,12 +658,16 @@ namespace v2rayN.Forms
 
         private int AddBatchServers(string clipboardData, string subid = "")
         {
-            if (ConfigHandler.AddBatchServers(ref config, clipboardData, subid) == 0)
+            if (ConfigHandler.AddBatchServers(ref config, clipboardData, subid) != 0)
             {
-                RefreshServers();
-                return 0;
+                clipboardData = Utils.Base64Decode(clipboardData);
+                if (ConfigHandler.AddBatchServers(ref config, clipboardData, subid) != 0)
+                {
+                    return -1;
+                }
             }
-            return -1;
+            RefreshServers();
+            return 0;
         }
 
         #endregion
@@ -1280,6 +1305,7 @@ namespace v2rayN.Forms
 
         }
         #endregion
+
 
     }
 }

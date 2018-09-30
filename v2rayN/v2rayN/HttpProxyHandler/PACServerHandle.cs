@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -14,18 +15,12 @@ namespace v2rayN.HttpProxyHandler
     /// </summary>
     class PACServerHandle
     {
-        private static HttpWebServer ws;
-        private static HttpWebServer wsLAN;
-        private static string pacList = string.Empty;
-        private static string pacListLAN = string.Empty;
+        private static Hashtable httpWebServer = new Hashtable();
+        private static Hashtable pacList = new Hashtable();
+
         public static void Init(Config config)
         {
-            string address = "127.0.0.1";
-            pacList = GetPacList(address);
-            string prefixes = string.Format("http://{0}:{1}/pac/", address, Global.pacPort);
-            Utils.SaveLog("Webserver prefixes " + prefixes);
-            ws = new HttpWebServer(SendResponse, prefixes);
-            ws.Run();
+            InitServer("127.0.0.1");
 
             if (config.allowLANConn)
             {
@@ -34,36 +29,77 @@ namespace v2rayN.HttpProxyHandler
                 {
                     return;
                 }
-                pacListLAN = GetPacList(lstIPAddress[0]);
-                string prefixesLAN = string.Format("http://{0}:{1}/pac/", lstIPAddress[0], Global.pacPort);
-                Utils.SaveLog("Webserver prefixes " + prefixesLAN);
-                wsLAN = new HttpWebServer(SendResponseLAN, prefixesLAN);
-                wsLAN.Run();
+                foreach (string str in lstIPAddress)
+                {
+                    InitServer(str);
+                }
+            }
+        }
+
+        public static void InitServer(string address)
+        {
+            try
+            {
+                if (!pacList.ContainsKey(address))
+                {
+                    pacList.Add(address, GetPacList(address));
+                }
+
+                string prefixes = string.Format("http://{0}:{1}/pac/", address, Global.pacPort);
+                Utils.SaveLog("Webserver prefixes " + prefixes);
+
+                HttpWebServer ws = new HttpWebServer(SendResponse, prefixes);
+                ws.Run();
+
+                if (!httpWebServer.ContainsKey(address) && ws != null)
+                {
+                    httpWebServer.Add(address, ws);
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog("Webserver InitServer " + ex.Message);
             }
         }
 
         public static string SendResponse(HttpListenerRequest request)
         {
-            //Utils.SaveLog("Webserver SendResponse");
-            return pacList;
+            try
+            {
+                string[] arrAddress = request.UserHostAddress.Split(':');
+                string address = "127.0.0.1";
+                if (arrAddress.Length > 0)
+                {
+                    address = arrAddress[0];
+                }
+                return pacList[address].ToString();
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog("Webserver SendResponse " + ex.Message);
+                return ex.Message;
+            }
         }
-        public static string SendResponseLAN(HttpListenerRequest request)
-        {
-            //Utils.SaveLog("Webserver SendResponseLAN");
-            return pacListLAN;
-        }
+
 
         public static void Stop()
         {
-            if (ws != null)
+            try
             {
-                Utils.SaveLog("Webserver Stop ws");
-                ws.Stop();
+                if (httpWebServer == null)
+                {
+                    return;
+                }
+                foreach (var key in httpWebServer.Keys)
+                {
+                    Utils.SaveLog("Webserver Stop " + key.ToString());
+                    ((HttpWebServer)httpWebServer[key]).Stop();
+                }
+                httpWebServer.Clear();
             }
-            if (wsLAN != null)
+            catch (Exception ex)
             {
-                Utils.SaveLog("Webserver Stop wsLAN");
-                wsLAN.Stop();
+                Utils.SaveLog("Webserver Stop " + ex.Message);
             }
         }
 

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.notifyMain = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuSysAgentEnabled = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +61,7 @@
             this.menuMoveUp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMoveDown = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMoveBottom = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.menuPingServer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSpeedServer = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,7 @@
             this.menuExport2ClientConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExport2ServerConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExport2ShareUrl = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExport2SubContent = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbServer = new System.Windows.Forms.ToolStripDropDownButton();
             this.bgwScan = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -100,7 +102,6 @@
             this.tsbAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
-            this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsMain.SuspendLayout();
             this.cmsLv.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -255,10 +256,11 @@
             this.toolStripSeparator6,
             this.menuExport2ClientConfig,
             this.menuExport2ServerConfig,
-            this.menuExport2ShareUrl});
+            this.menuExport2ShareUrl,
+            this.menuExport2SubContent});
             this.cmsLv.Name = "cmsLv";
             this.cmsLv.OwnerItem = this.tsbServer;
-            this.cmsLv.Size = new System.Drawing.Size(257, 446);
+            this.cmsLv.Size = new System.Drawing.Size(257, 468);
             // 
             // menuAddVmessServer
             // 
@@ -354,6 +356,13 @@
             this.menuMoveBottom.Text = "下移至底";
             this.menuMoveBottom.Click += new System.EventHandler(this.menuMoveBottom_Click);
             // 
+            // menuSelectAll
+            // 
+            this.menuSelectAll.Name = "menuSelectAll";
+            this.menuSelectAll.Size = new System.Drawing.Size(256, 22);
+            this.menuSelectAll.Text = "全选      (Ctrl+A)";
+            this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
+            // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
@@ -398,6 +407,13 @@
             this.menuExport2ShareUrl.Size = new System.Drawing.Size(256, 22);
             this.menuExport2ShareUrl.Text = "批量导出分享URL至剪贴板(多选)";
             this.menuExport2ShareUrl.Click += new System.EventHandler(this.menuExport2ShareUrl_Click);
+            // 
+            // menuExport2SubContent
+            // 
+            this.menuExport2SubContent.Name = "menuExport2SubContent";
+            this.menuExport2SubContent.Size = new System.Drawing.Size(256, 22);
+            this.menuExport2SubContent.Text = "批量导出订阅内容至剪贴板(多选)";
+            this.menuExport2SubContent.Click += new System.EventHandler(this.menuExport2SubContent_Click);
             // 
             // tsbServer
             // 
@@ -451,7 +467,7 @@
             this.lvServers.GridLines = true;
             this.lvServers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvServers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.lvServers.Location = new System.Drawing.Point(0, 0);
             this.lvServers.MultiSelect = false;
             this.lvServers.Name = "lvServers";
@@ -699,13 +715,6 @@
             this.tsbClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
-            // menuSelectAll
-            // 
-            this.menuSelectAll.Name = "menuSelectAll";
-            this.menuSelectAll.Size = new System.Drawing.Size(256, 22);
-            this.menuSelectAll.Text = "全选      (Ctrl+A)";
-            this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -812,6 +821,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsbCheckClearPACList;
         private System.Windows.Forms.ToolStripMenuItem menuKeepPAC;
         private System.Windows.Forms.ToolStripMenuItem menuSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem menuExport2SubContent;
     }
 }
 

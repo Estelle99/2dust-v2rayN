@@ -71,7 +71,7 @@ namespace v2rayN.Mode
         /// <summary>
         /// 
         /// </summary>
-        public List<string> domainOverride { get; set; }
+        public Sniffing sniffing { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -124,7 +124,17 @@ namespace v2rayN.Mode
         /// </summary>
         public string security { get; set; }
     }
-
+    public class Sniffing
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool enabled { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<string> destOverride { get; set; }
+    }
     public class Outbound
     {
         /// <summary>
@@ -233,7 +243,7 @@ namespace v2rayN.Mode
         /// <summary>
         /// 
         /// </summary>
-        public List<string> domainOverride { get; set; }
+        public Sniffing sniffing { get; set; }
         /// <summary>
         /// 
         /// </summary>
