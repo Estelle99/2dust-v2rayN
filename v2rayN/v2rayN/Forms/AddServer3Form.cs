@@ -66,22 +66,22 @@ namespace v2rayN.Forms
 
             if (Utils.IsNullOrEmpty(address))
             {
-                UI.Show("请填写服务器地址");
+                UI.Show(UIRes.I18N("FillServerAddress"));
                 return;
             }
             if (Utils.IsNullOrEmpty(port) || !Utils.IsNumberic(port))
             {
-                UI.Show("请填写正确格式服务器端口");
+                UI.Show(UIRes.I18N("FillCorrectServerPort"));
                 return;
             }
             if (Utils.IsNullOrEmpty(id))
             {
-                UI.Show("请填写密码");
+                UI.Show(UIRes.I18N("FillPassword"));
                 return;
             }
             if (Utils.IsNullOrEmpty(security))
             {
-                UI.Show("请选择加密方式");
+                UI.Show(UIRes.I18N("PleaseSelectEncryption"));
                 return;
             }
 
@@ -97,7 +97,7 @@ namespace v2rayN.Forms
             }
             else
             {
-                UI.Show("操作失败，请检查重试");
+                UI.Show(UIRes.I18N("OperationFailed"));
             }
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -134,7 +134,7 @@ namespace v2rayN.Forms
 
             //OpenFileDialog fileDialog = new OpenFileDialog();
             //fileDialog.Multiselect = false;
-            //fileDialog.Filter = "Config|*.json|所有文件|*.*";
+            //fileDialog.Filter = "Config|*.json|All|*.*";
             //if (fileDialog.ShowDialog() != DialogResult.OK)
             //{
             //    return;
@@ -221,7 +221,7 @@ namespace v2rayN.Forms
             string result = Convert.ToString(e.UserState);
             if (string.IsNullOrEmpty(result))
             {
-                UI.Show("扫描完成,未发现有效二维码");
+                UI.Show(UIRes.I18N("NoValidQRcodeFound"));
             }
             else
             {

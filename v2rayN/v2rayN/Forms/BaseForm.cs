@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Threading;
+using System.Windows.Forms;
 using v2rayN.Mode;
 
 namespace v2rayN.Forms

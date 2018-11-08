@@ -117,106 +117,173 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;picQRCode.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>取消(&amp;C)</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>服务器</value>
+  </data>
+  <data name="btnGUID.Text" xml:space="preserve">
+    <value>生成(&amp;G)</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>*手填,方便识别管理</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>不清楚则保持默认值</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 441</value>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
   </data>
-  <data name="chkShow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="label22.Text" xml:space="preserve">
+    <value>默认true</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txtUrl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 12</value>
   </data>
-  <data name="chkShow.Text" xml:space="preserve">
-    <value>Show shared content</value>
+  <data name="label20.Text" xml:space="preserve">
+    <value>3)h2 host中间逗号(,)隔开</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
   </data>
-  <data name="chkShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 16</value>
+  <data name="label19.Text" xml:space="preserve">
+    <value>路径(path)</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>QRCodeControl</value>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 12</value>
   </data>
-  <data name="picQRCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 355</value>
+  <data name="label14.Text" xml:space="preserve">
+    <value>1)http host中间逗号(,)隔开</value>
   </data>
-  <data name="txtUrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 371</value>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
   </data>
-  <data name="&gt;&gt;chkShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label15.Text" xml:space="preserve">
+    <value>底层传输安全</value>
   </data>
-  <data name="&gt;&gt;picQRCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 12</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txtUrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="label12.Text" xml:space="preserve">
+    <value>*tcp或kcp伪装类型,默认none</value>
   </data>
-  <data name="picQRCode.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+  <data name="txtRequestHost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 58</value>
   </data>
-  <data name="chkShow.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="txtRequestHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>334, 38</value>
   </data>
-  <data name="picQRCode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
   </data>
-  <data name="txtUrl.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>伪装类型(type)</value>
   </data>
-  <data name="picQRCode.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
   </data>
-  <data name="&gt;&gt;txtUrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>伪装域名(host)</value>
   </data>
-  <data name="&gt;&gt;txtUrl.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 12</value>
   </data>
-  <data name="&gt;&gt;chkShow.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>*默认tcp,选错会无法连接</value>
   </data>
-  <data name="picQRCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 16</value>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 12</value>
   </data>
-  <data name="&gt;&gt;txtUrl.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label8.Text" xml:space="preserve">
+    <value>*随便选,建议(aes-128-gcm)</value>
   </data>
-  <data name="&gt;&gt;chkShow.Name" xml:space="preserve">
-    <value>chkShow</value>
+  <data name="cmbNetwork.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 171</value>
   </data>
-  <data name="&gt;&gt;picQRCode.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="cmbNetwork.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 20</value>
   </data>
-  <data name="&gt;&gt;txtUrl.Name" xml:space="preserve">
-    <value>txtUrl</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 12</value>
   </data>
-  <data name="&gt;&gt;chkShow.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>传输协议(network)</value>
   </data>
-  <data name="&gt;&gt;picQRCode.Name" xml:space="preserve">
-    <value>picQRCode</value>
+  <data name="cmbSecurity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 143</value>
   </data>
-  <data name="txtUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 70</value>
+  <data name="cmbSecurity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 20</value>
   </data>
-  <data name="chkShow.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 12</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>别名(remarks)</value>
   </data>
-  <data name="chkShow.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 12</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="label5.Text" xml:space="preserve">
+    <value>加密方式(security)</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>额外ID(alterId)</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>用户ID(id)</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>端口(port)</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 12</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>地址(address)</value>
+  </data>
+  <data name="btnOK.Text" xml:space="preserve">
+    <value>确定(&amp;O)</value>
+  </data>
+  <data name="MenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 20</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>导入配置文件</value>
+  </data>
+  <data name="MenuItemImportClient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="MenuItemImportClient.Text" xml:space="preserve">
+    <value>导入客户端配置</value>
+  </data>
+  <data name="MenuItemImportServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="MenuItemImportServer.Text" xml:space="preserve">
+    <value>导入服务端配置</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 6</value>
+  </data>
+  <data name="MenuItemImportClipboard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="MenuItemImportClipboard.Text" xml:space="preserve">
+    <value>从剪贴板导入URL</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>编辑或添加[VMess]服务器</value>
+  </data>
 </root>

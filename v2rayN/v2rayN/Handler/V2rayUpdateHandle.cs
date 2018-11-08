@@ -6,6 +6,7 @@ using System.Text;
 using Newtonsoft.Json;
 using v2rayN.Mode;
 using v2rayN.Properties;
+using v2rayN.HttpProxyHandler;
 
 namespace v2rayN.Handler
 {
@@ -99,7 +100,7 @@ namespace v2rayN.Handler
 
                 progressPercentage = -1;
 
-                WebClient ws = new WebClient();
+                WebClientEx ws = new WebClientEx();
                 ws.DownloadFileCompleted += ws_DownloadFileCompleted;
                 ws.DownloadProgressChanged += ws_DownloadProgressChanged;
                 ws.DownloadFileAsync(new Uri(url), Utils.GetPath(DownloadFileName));
@@ -173,7 +174,7 @@ namespace v2rayN.Handler
                 ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; //TLS 1.2
                 ServicePointManager.DefaultConnectionLimit = 256;
 
-                WebClient ws = new WebClient();
+                WebClientEx ws = new WebClientEx();
                 ws.DownloadStringCompleted += Ws_DownloadStringCompleted;
                 ws.DownloadStringAsync(new Uri(url));
             }

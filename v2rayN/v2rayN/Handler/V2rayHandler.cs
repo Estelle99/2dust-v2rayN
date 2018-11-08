@@ -101,7 +101,7 @@ namespace v2rayN.Handler
         /// </summary>
         private void V2rayStart()
         {
-            ShowMsg(false, string.Format("启动服务({0})......", DateTime.Now.ToString()));
+            ShowMsg(false, string.Format(UIRes.I18N("StartService"), DateTime.Now.ToString()));
 
             try
             {
@@ -118,9 +118,8 @@ namespace v2rayN.Handler
                     }
                 }
                 if (Utils.IsNullOrEmpty(fileName))
-                {
-
-                    string msg = string.Format("未找到v2ray-core,下载地址:{0}", @"https://github.com/v2ray/v2ray-core/releases");
+                {       
+                    string msg = string.Format(UIRes.I18N("NotFoundCore"), @"https://github.com/v2ray/v2ray-core/releases");
                     ShowMsg(true, msg);
                     return;
                 }

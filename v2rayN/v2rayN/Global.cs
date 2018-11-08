@@ -21,10 +21,7 @@ namespace v2rayN
         ///  
         /// </summary>
         public const string GithubIssuesUrl = @"https://github.com/2dust/v2rayN/issues";
-        /// <summary>
-        ///  
-        /// </summary>
-        public const string TelegramGroupUrl = @"https://t.me/v2rayN";
+        
 
         /// <summary>
         /// SpeedTestUrl
@@ -120,6 +117,15 @@ namespace v2rayN
         /// </summary>
         public const string userEMail = "t@t.tt";
 
+        /// <summary>
+        /// MyRegPath
+        /// </summary>
+        public const string MyRegPath = "Software\\v2rayNGUI";
+
+        /// <summary>
+        /// Language
+        /// </summary>
+        public const string MyRegKeyLanguage = "CurrentLanguage";
 
         #endregion
 

@@ -37,11 +37,11 @@ namespace v2rayN.Handler
                     || config.index > config.vmess.Count - 1
                     )
                 {
-                    msg = "请先检查服务器设置";
+                    msg = UIRes.I18N("CheckServerSettings");
                     return -1;
                 }
 
-                msg = "初始化配置";
+                msg = UIRes.I18N("InitialConfiguration");
                 if (config.configType() == (int)EConfigType.Custom)
                 {
                     return GenerateClientCustomConfig(config, fileName, out msg);
@@ -51,7 +51,7 @@ namespace v2rayN.Handler
                 string result = Utils.GetEmbedText(SampleClient);
                 if (Utils.IsNullOrEmpty(result))
                 {
-                    msg = "取得默认配置失败";
+                    msg = UIRes.I18N("FailedGetDefaultConfiguration");
                     return -1;
                 }
 
@@ -59,7 +59,7 @@ namespace v2rayN.Handler
                 V2rayConfig v2rayConfig = Utils.FromJson<V2rayConfig>(result);
                 if (v2rayConfig == null)
                 {
-                    msg = "生成默认配置文件失败";
+                    msg = UIRes.I18N("FailedGenDefaultConfiguration");
                     return -1;
                 }
 
@@ -82,12 +82,12 @@ namespace v2rayN.Handler
                 dns(config, ref v2rayConfig);
 
                 Utils.ToJsonFile(v2rayConfig, fileName);
-
-                msg = string.Format("配置成功 \r\n{0}", config.getSummary());
+                
+                msg = string.Format(UIRes.I18N("SuccessfulConfiguration"), config.getSummary());
             }
             catch
             {
-                msg = "异常，生成默认配置文件失败";
+                msg = UIRes.I18N("FailedGenDefaultConfiguration");
                 return -1;
             }
             return 0;
@@ -311,7 +311,8 @@ namespace v2rayN.Handler
                         else if (Utils.IsDomain(url)
                             || url.StartsWith("geosite:")
                             || url.StartsWith("regexp:")
-                            || url.StartsWith("domain:"))
+                            || url.StartsWith("domain:")
+                            || url.StartsWith("full:"))
                         {
                             rulesDomain.domain.Add(url);
                         }
@@ -587,7 +588,7 @@ namespace v2rayN.Handler
                     || config.index > config.vmess.Count - 1
                     )
                 {
-                    msg = "请先检查服务器设置";
+                    msg = UIRes.I18N("CheckServerSettings");
                     return -1;
                 }
 
@@ -598,11 +599,11 @@ namespace v2rayN.Handler
                 }
                 File.Copy(addressFileName, fileName);
 
-                msg = string.Format("配置成功 \r\n{0}", config.getSummary());
+                msg = string.Format(UIRes.I18N("SuccessfulConfiguration"), config.getSummary());
             }
             catch
             {
-                msg = "异常，生成默认配置文件失败";
+                msg = UIRes.I18N("FailedGenDefaultConfiguration");
                 return -1;
             }
             return 0;
@@ -632,17 +633,17 @@ namespace v2rayN.Handler
                     || config.index > config.vmess.Count - 1
                     )
                 {
-                    msg = "请先检查服务器设置";
+                    msg = UIRes.I18N("CheckServerSettings");
                     return -1;
                 }
 
-                msg = "初始化配置";
+                msg = UIRes.I18N("InitialConfiguration");
 
                 //取得默认配置
                 string result = Utils.GetEmbedText(SampleServer);
                 if (Utils.IsNullOrEmpty(result))
                 {
-                    msg = "取得默认配置失败";
+                    msg = UIRes.I18N("FailedGetDefaultConfiguration");
                     return -1;
                 }
 
@@ -650,7 +651,7 @@ namespace v2rayN.Handler
                 V2rayConfig v2rayConfig = Utils.FromJson<V2rayConfig>(result);
                 if (v2rayConfig == null)
                 {
-                    msg = "生成默认配置文件失败";
+                    msg = UIRes.I18N("FailedGenDefaultConfiguration");
                     return -1;
                 }
 
@@ -665,11 +666,11 @@ namespace v2rayN.Handler
 
                 Utils.ToJsonFile(v2rayConfig, fileName);
 
-                msg = string.Format("配置成功 \r\n{0}", config.getSummary());
+                msg = string.Format(UIRes.I18N("SuccessfulConfiguration"), config.getSummary());
             }
             catch
             {
-                msg = "异常，生成默认配置文件失败";
+                msg = UIRes.I18N("FailedGenDefaultConfiguration");
                 return -1;
             }
             return 0;
@@ -759,7 +760,7 @@ namespace v2rayN.Handler
                 string result = Utils.LoadResource(fileName);
                 if (Utils.IsNullOrEmpty(result))
                 {
-                    msg = "读取配置文件失败";
+                    msg = UIRes.I18N("FailedReadConfiguration");
                     return null;
                 }
 
@@ -767,7 +768,7 @@ namespace v2rayN.Handler
                 V2rayConfig v2rayConfig = Utils.FromJson<V2rayConfig>(result);
                 if (v2rayConfig == null)
                 {
-                    msg = "转换配置文件失败";
+                    msg = UIRes.I18N("FailedConversionConfiguration");
                     return null;
                 }
 
@@ -780,7 +781,7 @@ namespace v2rayN.Handler
                     || v2rayConfig.outbound.settings.vnext[0].users == null
                     || v2rayConfig.outbound.settings.vnext[0].users.Count <= 0)
                 {
-                    msg = "不是正确的客户端配置文件，请检查";
+                    msg = UIRes.I18N("IncorrectClientConfiguration");
                     return null;
                 }
 
@@ -866,7 +867,7 @@ namespace v2rayN.Handler
             }
             catch
             {
-                msg = "异常，不是正确的客户端配置文件，请检查";
+                msg = UIRes.I18N("IncorrectClientConfiguration");
                 return null;
             }
 
@@ -890,7 +891,7 @@ namespace v2rayN.Handler
                 string result = Utils.LoadResource(fileName);
                 if (Utils.IsNullOrEmpty(result))
                 {
-                    msg = "读取配置文件失败";
+                    msg = UIRes.I18N("FailedReadConfiguration");
                     return null;
                 }
 
@@ -898,7 +899,7 @@ namespace v2rayN.Handler
                 V2rayConfig v2rayConfig = Utils.FromJson<V2rayConfig>(result);
                 if (v2rayConfig == null)
                 {
-                    msg = "转换配置文件失败";
+                    msg = UIRes.I18N("FailedConversionConfiguration");
                     return null;
                 }
 
@@ -909,7 +910,7 @@ namespace v2rayN.Handler
                     || v2rayConfig.inbound.settings.clients == null
                     || v2rayConfig.inbound.settings.clients.Count <= 0)
                 {
-                    msg = "不是正确的服务端配置文件，请检查";
+                    msg = UIRes.I18N("IncorrectServerConfiguration");
                     return null;
                 }
 
@@ -995,7 +996,7 @@ namespace v2rayN.Handler
             }
             catch
             {
-                msg = "异常，不是正确的客户端配置文件，请检查";
+                msg = UIRes.I18N("IncorrectClientConfiguration");
                 return null;
             }
             return vmessItem;
@@ -1018,7 +1019,7 @@ namespace v2rayN.Handler
                 string result = clipboardData.Trim();// Utils.GetClipboardData();
                 if (Utils.IsNullOrEmpty(result))
                 {
-                    msg = "读取配置文件失败";
+                    msg = UIRes.I18N("FailedReadConfiguration");
                     return null;
                 }
 
@@ -1039,7 +1040,7 @@ namespace v2rayN.Handler
                         VmessQRCode vmessQRCode = Utils.FromJson<VmessQRCode>(result);
                         if (vmessQRCode == null)
                         {
-                            msg = "转换配置文件失败";
+                            msg = UIRes.I18N("FailedConversionConfiguration");
                             return null;
                         }
                         vmessItem.security = Global.DefaultSecurity;
@@ -1063,7 +1064,7 @@ namespace v2rayN.Handler
                 }
                 else if (result.StartsWith(Global.ssProtocol))
                 {
-                    msg = "配置格式不正确";
+                    msg = UIRes.I18N("ConfigurationFormatIncorrect");
 
                     vmessItem.configType = (int)EConfigType.Shadowsocks;
                     result = result.Substring(Global.ssProtocol.Length);
@@ -1107,13 +1108,13 @@ namespace v2rayN.Handler
                 }
                 else
                 {
-                    msg = "非vmess或ss协议";
+                    msg = UIRes.I18N("NonvmessOrssProtocol");
                     return null;
                 }
             }
             catch
             {
-                msg = "异常，不是正确的配置，请检查";
+                msg = UIRes.I18N("Incorrectconfiguration");
                 return null;
             }
 

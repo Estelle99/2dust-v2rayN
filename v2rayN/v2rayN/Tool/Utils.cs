@@ -359,26 +359,20 @@ namespace v2rayN
         /// <returns></returns>
         public static int SetAutoRun(bool run)
         {
-            RegistryKey regKey = null;
             try
             {
-                regKey = Registry.CurrentUser.CreateSubKey(autoRunRegPath);
                 if (run)
                 {
                     string exePath = GetExePath();
-                    regKey.SetValue(autoRunName, exePath);
+                    RegWriteValue(autoRunRegPath, autoRunName, exePath);
                 }
                 else
                 {
-                    regKey.DeleteValue(autoRunName, false);
+                    RegWriteValue(autoRunRegPath, autoRunName, "");
                 }
             }
             catch
             {
-            }
-            finally
-            {
-                regKey?.Close();
             }
             return 0;
         }
@@ -389,11 +383,9 @@ namespace v2rayN
         /// <returns></returns>
         public static bool IsAutoRun()
         {
-            RegistryKey regKey = null;
             try
             {
-                regKey = Registry.CurrentUser.OpenSubKey(autoRunRegPath, false);
-                var value = regKey.GetValue(autoRunName) as string;
+                var value = RegReadValue(autoRunRegPath, autoRunName, "");
                 string exePath = GetExePath();
                 if (value?.Equals(exePath) == true)
                 {
@@ -402,10 +394,6 @@ namespace v2rayN
             }
             catch
             {
-            }
-            finally
-            {
-                regKey?.Close();
             }
             return false;
         }
@@ -446,6 +434,55 @@ namespace v2rayN
             }
         }
 
+        public static string RegReadValue(string path, string name, string def)
+        {
+            RegistryKey regKey = null;
+            try
+            {
+                regKey = Registry.CurrentUser.OpenSubKey(path, false);
+                string value = regKey?.GetValue(name) as string;
+                if (IsNullOrEmpty(value))
+                {
+                    return def;
+                }
+                else
+                {
+                    return value;
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                regKey?.Close();
+            }
+            return def;
+        }
+
+        public static void RegWriteValue(string path, string name, string value)
+        {
+            RegistryKey regKey = null;
+            try
+            {
+                regKey = Registry.CurrentUser.CreateSubKey(path);
+                if (IsNullOrEmpty(value))
+                {
+                    regKey?.DeleteValue(name, false);
+                }
+                else
+                {
+                    regKey?.SetValue(name, value);
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                regKey?.Close();
+            }
+        }
         #endregion
 
         #region 测速

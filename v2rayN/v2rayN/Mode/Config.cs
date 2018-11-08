@@ -69,7 +69,7 @@ namespace v2rayN.Mode
         /// KcpItem
         /// </summary>
         public KcpItem kcpItem { get; set; }
-              
+
 
         /// <summary>
         /// 启用Http代理
@@ -99,6 +99,10 @@ namespace v2rayN.Mode
         /// 订阅
         /// </summary>
         public List<SubItem> subItem { get; set; }
+        /// <summary>
+        /// UI
+        /// </summary>
+        public UIItem uiItem { get; set; }
 
         #region 函数
 
@@ -461,5 +465,20 @@ namespace v2rayN.Mode
         /// url
         /// </summary>
         public string url { get; set; }
+
+        /// <summary>
+        /// enable
+        /// </summary>
+        public bool enabled { get; set; } = true;
+    }
+
+    [Serializable]
+    public class UIItem
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public int mainQRCodeWidth { get; set; } = 600;
+
     }
 }

@@ -127,22 +127,22 @@ namespace v2rayN.Forms
 
             if (Utils.IsNullOrEmpty(address))
             {
-                UI.Show("请填写地址");
+                UI.Show(UIRes.I18N("FillServerAddress"));
                 return;
             }
             if (Utils.IsNullOrEmpty(port) || !Utils.IsNumberic(port))
             {
-                UI.Show("请填写正确格式端口");
+                UI.Show(UIRes.I18N("FillCorrectServerPort"));
                 return;
             }
             if (Utils.IsNullOrEmpty(id))
             {
-                UI.Show("请填写用户ID");
+                UI.Show(UIRes.I18N("FillUUID"));
                 return;
             }
             if (Utils.IsNullOrEmpty(alterId) || !Utils.IsNumberic(alterId))
             {
-                UI.Show("请填写正确格式额外ID");
+                UI.Show(UIRes.I18N("FillCorrectAlterId"));
                 return;
             }
 
@@ -166,7 +166,7 @@ namespace v2rayN.Forms
             }
             else
             {
-                UI.Show("操作失败，请检查重试");
+                UI.Show(UIRes.I18N("OperationFailed"));
             }
         }
 
@@ -209,7 +209,7 @@ namespace v2rayN.Forms
 
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "Config|*.json|所有文件|*.*";
+            fileDialog.Filter = "Config|*.json|All|*.*";
             if (fileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;

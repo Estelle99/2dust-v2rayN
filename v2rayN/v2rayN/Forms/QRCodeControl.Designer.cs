@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QRCodeControl));
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.picQRCode = new System.Windows.Forms.PictureBox();
             this.chkShow = new System.Windows.Forms.CheckBox();
@@ -36,45 +37,31 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtUrl.Location = new System.Drawing.Point(0, 371);
-            this.txtUrl.Multiline = true;
+            resources.ApplyResources(this.txtUrl, "txtUrl");
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.ReadOnly = true;
-            this.txtUrl.Size = new System.Drawing.Size(356, 70);
-            this.txtUrl.TabIndex = 0;
             // 
             // picQRCode
             // 
-            this.picQRCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picQRCode.Location = new System.Drawing.Point(0, 16);
+            resources.ApplyResources(this.picQRCode, "picQRCode");
             this.picQRCode.Name = "picQRCode";
-            this.picQRCode.Size = new System.Drawing.Size(356, 355);
-            this.picQRCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picQRCode.TabIndex = 24;
             this.picQRCode.TabStop = false;
             // 
             // chkShow
             // 
-            this.chkShow.AutoSize = true;
-            this.chkShow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkShow.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.chkShow, "chkShow");
             this.chkShow.Name = "chkShow";
-            this.chkShow.Size = new System.Drawing.Size(356, 16);
-            this.chkShow.TabIndex = 25;
-            this.chkShow.Text = "显示分享内容";
             this.chkShow.UseVisualStyleBackColor = true;
             this.chkShow.CheckedChanged += new System.EventHandler(this.chkShow_CheckedChanged);
             // 
             // QRCodeControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.picQRCode);
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.chkShow);
             this.Name = "QRCodeControl";
-            this.Size = new System.Drawing.Size(356, 441);
             this.Load += new System.EventHandler(this.QRCodeControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).EndInit();
             this.ResumeLayout(false);

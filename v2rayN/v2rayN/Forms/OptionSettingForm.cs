@@ -131,7 +131,7 @@ namespace v2rayN.Forms
             }
             else
             {
-                UI.Show("操作失败，请检查重试");
+                UI.Show(UIRes.I18N("OperationFailed"));
             }
         }
 
@@ -154,12 +154,12 @@ namespace v2rayN.Forms
             bool udpEnabled = chkudpEnabled.Checked;
             if (Utils.IsNullOrEmpty(localPort) || !Utils.IsNumberic(localPort))
             {
-                UI.Show("请填写本地监听端口");
+                UI.Show(UIRes.I18N("FillLocalListeningPort"));
                 return -1;
             }
             if (Utils.IsNullOrEmpty(protocol))
             {
-                UI.Show("请选择协议");
+                UI.Show(UIRes.I18N("PleaseSelectProtocol"));
                 return -1;
             }
             config.inbound[0].localPort = Utils.ToInt(localPort);
@@ -174,12 +174,12 @@ namespace v2rayN.Forms
             {
                 if (Utils.IsNullOrEmpty(localPort2) || !Utils.IsNumberic(localPort2))
                 {
-                    UI.Show("请填写本地监听端口2");
+                    UI.Show(UIRes.I18N("FillLocalListeningPort"));
                     return -1;
                 }
                 if (Utils.IsNullOrEmpty(protocol2))
                 {
-                    UI.Show("请选择协议2");
+                    UI.Show(UIRes.I18N("PleaseSelectProtocol"));
                     return -1;
                 }
                 if (config.inbound.Count < 2)
@@ -256,7 +256,7 @@ namespace v2rayN.Forms
                 || Utils.IsNullOrEmpty(readBufferSize) || !Utils.IsNumberic(readBufferSize)
                 || Utils.IsNullOrEmpty(writeBufferSize) || !Utils.IsNumberic(writeBufferSize))
             {
-                UI.Show("请正确填写KCP参数");
+                UI.Show(UIRes.I18N("FillKcpParameters"));
                 return -1;
             }
             config.kcpItem.mtu = Utils.ToInt(mtu);
@@ -303,5 +303,6 @@ namespace v2rayN.Forms
             cmbprotocol2.Enabled =
             chkudpEnabled2.Enabled = blAllow2;
         }
+        
     }
 }

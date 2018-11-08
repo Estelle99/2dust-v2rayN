@@ -8,7 +8,7 @@ namespace v2rayN.Forms
 {
     public partial class SubSettingForm : BaseForm
     {
-        private SubItem curItem = null;
+        List<SubSettingControl> lstControls = new List<SubSettingControl>();
 
         public SubSettingForm()
         {
@@ -22,28 +22,7 @@ namespace v2rayN.Forms
                 config.subItem = new List<SubItem>();
             }
 
-            InitSubsView();
             RefreshSubsView();
-        }
-
-
-        /// <summary>
-        /// 初始化列表
-        /// </summary>
-        private void InitSubsView()
-        {
-            lvSubs.Items.Clear();
-
-            lvSubs.GridLines = true;
-            lvSubs.FullRowSelect = true;
-            lvSubs.View = View.Details;
-            lvSubs.Scrollable = true;
-            lvSubs.MultiSelect = false;
-            lvSubs.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-
-            lvSubs.Columns.Add("", 30, HorizontalAlignment.Center);
-            lvSubs.Columns.Add("备注", 100, HorizontalAlignment.Left);
-            lvSubs.Columns.Add("地址", 400, HorizontalAlignment.Left);
         }
 
         /// <summary>
@@ -51,43 +30,41 @@ namespace v2rayN.Forms
         /// </summary>
         private void RefreshSubsView()
         {
-            lvSubs.Items.Clear();
+            panCon.Controls.Clear();
+            lstControls.Clear();
+
+            for (int k = config.subItem.Count - 1; k >= 0; k--)
+            {
+                var item = config.subItem[k];
+                if (Utils.IsNullOrEmpty(item.remarks)
+                    && Utils.IsNullOrEmpty(item.url))
+                {
+                    if (!Utils.IsNullOrEmpty(item.id))
+                    {
+                        ConfigHandler.RemoveServerViaSubid(ref config, item.id);
+                    }
+                    config.subItem.RemoveAt(k);
+                }
+            }
 
             for (int k = 0; k < config.subItem.Count; k++)
             {
                 var item = config.subItem[k];
-                ListViewItem lvItem = new ListViewItem(new string[]
-                {
-                    (k+1).ToString(),
-                    item.remarks,
-                    item.url
-                });
-                lvSubs.Items.Add(lvItem);
+                SubSettingControl control = new SubSettingControl();
+                control.OnButtonClicked += Control_OnButtonClicked;
+                control.subItem = item;
+                control.Dock = DockStyle.Top;
+
+                panCon.Controls.Add(control);
+                panCon.Controls.SetChildIndex(control, 0);
+
+                lstControls.Add(control);
             }
         }
 
-
-        /// <summary>
-        /// 取得ListView选中的行
-        /// </summary>
-        /// <returns></returns>
-        private int GetLvSelectedIndex()
+        private void Control_OnButtonClicked(object sender, EventArgs e)
         {
-            int index = -1;
-            try
-            {
-                if (lvSubs.SelectedIndices.Count <= 0)
-                {
-                    UI.Show("请先选择");
-                    return index;
-                }
-                index = lvSubs.SelectedIndices[0];
-                return index;
-            }
-            catch
-            {
-                return index;
-            }
+            RefreshSubsView();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -103,7 +80,7 @@ namespace v2rayN.Forms
             }
             else
             {
-                UI.Show("操作失败，请检查重试");
+                UI.Show(UIRes.I18N("OperationFailed"));
             }
         }
 
@@ -117,73 +94,16 @@ namespace v2rayN.Forms
             AddSub();
 
             RefreshSubsView();
-
-            lvSubs.Items[lvSubs.Items.Count - 1].Selected = true;
-            txtRemarks.Focus();
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            int index = GetLvSelectedIndex();
-            if (index < 0)
-            {
-                return;
-            }
-            config.subItem.RemoveAt(index);
 
-            RefreshSubsView();
-        }
-
-        private void lvSubs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            curItem = null;
-            int index = -1;
-            try
-            {
-                if (lvSubs.SelectedIndices.Count > 0)
-                {
-                    index = lvSubs.SelectedIndices[0];
-                }
-                curItem = config.subItem[index];
-                BindingSub();
-            }
-            catch
-            {
-            }
-        }
         private void AddSub()
         {
             var subItem = new SubItem();
             subItem.id = string.Empty;
-            subItem.remarks = "备注(remarks)";
-            subItem.url = "地址(url)";
+            subItem.remarks = "remarks";
+            subItem.url = "url";
             config.subItem.Add(subItem);
-        }
-
-
-        private void BindingSub()
-        {
-            if (curItem != null)
-            {
-                txtRemarks.Text = curItem.remarks.ToString();
-                txtUrl.Text = curItem.url.ToString();
-            }
-        }
-
-        private void EndBindingSub()
-        {
-            if (curItem != null)
-            {
-                curItem.remarks = txtRemarks.Text.Trim();
-                curItem.url = txtUrl.Text.Trim();
-
-                RefreshSubsView();
-            }
-        }
-
-        private void txtRemarks_Leave(object sender, EventArgs e)
-        {
-            EndBindingSub();
         }
     }
 }

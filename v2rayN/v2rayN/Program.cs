@@ -33,13 +33,17 @@ namespace v2rayN
             {
                 Utils.SaveLog("v2rayN start up");
 
+                //设置语言环境
+                string lang = Utils.RegReadValue(Global.MyRegPath, Global.MyRegKeyLanguage, "zh-Hans");
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainForm());
             }
             else
             {
-                MessageBox.Show("v2rayN已经运行");
+                UI.Show("v2rayN is already running(v2rayN已经运行)");
             }
         }
 
